@@ -8,11 +8,13 @@ def menu_inventory():
             print("4. Actualizar producto")
             print("5. Eliminar producto")
             print("6. Estadísticas")
-            print("7. Salir")
+            print("7. Guardar CSV")
+            print("8. Cargar CSV")
+            print("9. Salir")
             print("")
             try:
                 menu_choice = int(input("Seleccione una opción: "))
-                if menu_choice <= 0 or menu_choice > 7:
+                if menu_choice <= 0 or menu_choice > 9:
                         print("\033[91m¡ERROR!. Opción no contemplada en la lista. Intente de nuevo.\033[0m")
                         continue
                 else:
@@ -110,12 +112,12 @@ def update_product(inventory):
                 product["qty"] = new_qty
 
                 print("\033[92mProducto actualizado correctamente.\033[0m")
+                repeat = False
                 break
-        repeat = False
-        if product["name"] != name_product:
-            print("\033[93mEl producto no existe en el inventario. Intente de nuevo\033[0m")
-            print("")
-            repeat = True
+            else:
+                print("\033[93mEl producto no existe, intente nuevamente.\033[0m")
+                continue
+        
 
 def remove_product(inventory):
     """
